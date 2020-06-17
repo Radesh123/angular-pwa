@@ -1,0 +1,7 @@
+<div class="status-text" *ngIf="verificationStatus === 'success'">
+    <p>Email has been verified successfully. Click <a (click)="navigateToLogin()"><b><u>here</u></b></a> to login.</p>
+</div>
+
+<div class="status-text" *ngIf="verificationStatus === 'fail'">
+    <p>Email verification failed.</p>
+</div>

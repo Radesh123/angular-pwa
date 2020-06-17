@@ -1,0 +1,48 @@
+<div class="mx-auto align-items-center login-section">
+    <form class="signin-form" onSubmit="">
+        <app-landingscreen hidecircle="true"></app-landingscreen>
+        <hr/>
+        <div [formGroup]="loginForm" class="pl-4 pr-4 pt-4 form-section">
+            <p *ngIf="passwordReset">Email has been sent to Reset password</p>
+            <div class="form-group">
+                <label htmlFor="email" class="col-form-label">Enter your Email</label>
+                <div>
+                    <input formControlName="email" placeholder="Required Field" type="email" class="form-control username" id='email' />
+                </div>
+                <div class="warning-msg" *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched || nextClicked)">
+                    <div *ngIf="loginForm.get('email').errors.required">
+                        This field is required.
+                    </div>
+                    <div *ngIf="loginForm.get('email').errors.email">
+                        Enter valid Email ID.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label htmlFor="password" class="col-form-label">Enter Password</label>
+                <div>
+                    <input formControlName="password" placeholder="•••••••••" [type]="hide ? 'password' : 'text'" class="form-control" id="password" />
+                    <span class="eye-icon" *ngIf="hide"><i class="fa fa-eye-slash" (click)="toggleEyeIcon()"></i></span>
+                    <span class="eye-icon" *ngIf="!hide"><i class="fa fa-eye" (click)="toggleEyeIcon()"></i></span>
+                </div>
+                <div class="warning-msg" *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched || nextClicked)">
+                    <div *ngIf="loginForm.get('password').errors.required">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+            <p *ngIf="errorMessage" class="font-12 form-section">Wrong Credentials! Login with right credentials</p>
+            <div class="form-group">
+                <div>
+                 <button type="button" class="btn sign-in-btn col-sm-12" [disabled]="!loginForm.valid" (click)="loginUser()">LOGIN</button>
+                </div>
+                <div class="forgot-section">
+                   <a class="forgot-pass" (click)="triggerForgotPassword(loginForm.get('email').value)">Forgot Password?</a>
+                </div>
+                <div class="reg-section">
+                    <label class="col-form-label">New to PYF? <a href="#"><u>Register</u></a> Now!</label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

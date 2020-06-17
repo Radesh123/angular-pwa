@@ -1,0 +1,104 @@
+::ng-deep body {
+   background: #EDEBEB;
+}
+.mentor-elem {
+    background-color: #ffffff;
+    margin: 15px;
+    padding: 10px;
+}
+.mentor-list {
+    padding-top: 70px;
+    color: #504D4D;
+}
+.det-sec {
+    margin-top: 5px;
+}
+.mentor-name , .view-det {
+    font-weight: bold;
+}
+.view-det {
+    text-align: right;
+}
+.mentor-list {
+    font-size: 14px;
+}
+.progress-section {
+    position: fixed;
+    width: 100%;
+    color: #686666;
+    background-color: #fff;
+    z-index: 999;
+}
+.register-header {
+    padding: 1em;
+    background: #504D4D;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+}
+.step-text {
+    margin-left: 20px;
+}
+.profile-det, .prof-info-sec, .prog-req-sec {
+    padding-top: 70px;
+    color: #504D4D;
+}
+.fa-user-circle {
+    color: #504D4D;
+}
+.mentor-name-prof {
+    line-height: 48px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.prof-det-sec, .prof-info-sec, .prog-req-sec {
+    padding: 20px 0;
+    margin: 15px 20px;
+    background: #ffffff;
+}
+.prof-det-label-1 {
+    font-weight: bold;
+    font-size: 15px;
+}
+.prof-det-label-2 {
+    font-weight: bold;
+    font-size: 14px;
+}
+.profile-item {
+    padding-top: 15px;
+}
+.prof-det-label-2 {
+    margin-bottom: 5px;
+}
+.prof-det-value-2 {
+    font-size: 14px;
+}
+.img-sec {
+    padding-left: 20px;
+}
+.prof-det-sec, .img-sec, .approve-sec {
+    margin-right: 20px;
+}
+.dis-appr-btn, .appr-btn {
+    button {
+        width: 100%;
+        color: #fff;
+        padding: 15px;
+        border-radius: 3px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+.dis-appr-btn {
+    button {
+        background: #686666;
+    }
+}
+.appr-btn {
+    button {
+        background: #504D4D;
+    }
+}
+.approve-sec {
+    margin: 15px 20px;
+}

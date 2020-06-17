@@ -1,0 +1,35 @@
+.teacher-dashboard-wrapper {
+    margin: 0 20px;
+    .bg-card {
+        background-color: #777676;
+    }
+    .progress {
+        border-radius: 5px;
+        margin: 0 10px;
+    }
+    .card-title,.card-text {
+        margin: 10px 10px;
+    }
+    .card-box-shadow {
+        box-shadow: 0 2px 8px 0 rgba(80, 80, 80, 0.21);
+    }
+    .card-header {
+        border-bottom: 1px solid #000;
+    }
+    .lessonsList {
+        .card-header {
+            background-color: #fff;
+        }
+        .acc-title {
+            width: 100%;
+        }
+        .fa-chevron-down {
+            font-size: 14px;
+            color: #000;
+        }
+    }
+    .font-16 {
+        font-size: 16px;
+    }
+    
+}

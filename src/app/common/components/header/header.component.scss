@@ -1,0 +1,35 @@
+.header-container {
+    background-color: #3f4257;
+    .title {
+        color: #fff;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .navbar {
+        background: #777676;
+        color: #fff;
+    }
+
+    .nav-right {
+        float: right;
+    }
+
+    li {
+        cursor: pointer;
+    }
+
+    .dropdown-menu {
+        padding: 10px;
+        color: #fff;
+        a {
+            background: #3f4257;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            padding: 1rem 1.5rem;
+        }
+    }
+
+    .navbar {
+        border-bottom: 1px solid #fff;
+    }
+}

@@ -1,0 +1,12 @@
+<div class="register-wrapper mx-auto align-items-center">
+    <div class="row progress-items-circles">
+        <div *ngFor="let stepInfo of progressBarInfo" [class.select]="currentStep === stepInfo.id">
+            {{stepInfo.id}}
+        </div>
+    </div>
+    <div class="row progress-items-desc">
+        <div *ngFor="let stepInfo of progressBarInfo" [class.select]="currentStep === stepInfo.id">
+            {{stepInfo.desc}}
+        </div>
+    </div>
+</div>

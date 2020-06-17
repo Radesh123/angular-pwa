@@ -1,0 +1,36 @@
+export interface TeacherRegReq {
+     "UserId": string, 
+     "TeacherId": 3, 
+     "Email": "testteacher@yopmail.com", 
+     "Name": "Test Teacher", 
+     "ContactNumber": "1234567890", 
+     "GenderId": number, 
+     "City": string, 
+     "StateId": number, 
+     "QualificationId": number, 
+     "OtherQualification": string, 
+     "Languages": number[], 
+     "Subjects": number[], 
+     "Classes": number[], 
+     "Password": string 
+}
+export interface MentorRegReq {
+     "Name": string,
+    "Email": string,
+    "Password": string,
+    "GenderId": number,
+    "ContactNumber": string,
+    "City": string,
+    "StateId": number,
+    "QualificationId": number,
+    "OtherQualification": string,
+    "Languages": number[],
+    "WorkingInSssvv": boolean,
+    "SssvvVolunteer": string,
+    "WorkingInSaiOrganization": boolean,
+    "SaiOrganizationVolunteer": string,
+    "PastExperience": string,
+    "Occupation": string,
+    "TimeCapacity": number,
+    "TeacherCapacity": number
+}

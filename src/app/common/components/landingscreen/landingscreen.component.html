@@ -1,0 +1,18 @@
+<div class="mx-auto align-items-center" [class.hidecircle]="hidecircle">
+    <div class="circle"></div>
+    <p class="app-name">PYF</p>
+    <p class="app-desc">Phone Your Friend</p>
+</div>
+<div class="voice-record-section">
+    <button class="start-button" *ngIf="!isRecording && !blobUrl" (click)="startRecording()">Start Recording</button>
+    <button class="stop-button" *ngIf="isRecording && !blobUrl" (click)="stopRecording()">Stop Recording</button>
+    <button class="cancel-button" *ngIf="!isRecording && blobUrl" (click)="clearRecordedData()">Clear Recording</button>
+    <button class="cancel-button store-button" (click)="storeRecordingIntoDB()">Store into DB</button>
+    <button class="cancel-btn retrieve-btn" (click)="getRecordingFromDB()">Get from DB</button>
+    <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
+    <div>
+    <audio *ngIf="!isRecording && blobUrl"  controls>
+      <source [src]="blobUrl" type="audio/webm">
+    </audio>
+    </div>
+  </div>

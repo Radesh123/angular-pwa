@@ -1,0 +1,50 @@
+.progress-items-circles {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 2px solid #686666;
+  padding-top: 15px;
+  margin-top: 15px;
+  margin-left: 0;
+}
+
+.progress-items-desc {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-left: 0;
+}
+
+.progress-items-circles div {
+    background-color: #ffffff;
+    border: 2px solid #686666;
+    margin-top: -46px;
+    width: 60px;
+    height: 60px;
+    line-height: 55px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 18px;
+    color: #686666;
+  }
+  .progress-items-desc div {
+    color: #686666;
+    font-size: 15px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+  }
+
+  .progress-items-desc {
+      .select {
+        font-weight: bold;
+      }
+  }
+
+  .progress-items-circles {
+      .select {
+        background: #ccc;
+        font-weight: bold;
+      }
+  }

@@ -1,0 +1,12 @@
+<div class="text-center overlay" *ngIf="isLoading | async">
+  <div class="spinner-border text-success spin-style" role="status"></div>
+</div>
+<div class="main-wrapper">
+  <div class="inner-container">
+    <app-header *ngIf="true"></app-header>
+    <div class="route-page-section">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

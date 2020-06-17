@@ -1,0 +1,113 @@
+.app-name,.app-desc {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #686666;
+    font-size: 3em;
+}
+
+.app-name {
+    font-size: 10em;
+    font-weight: bold;
+}
+
+
+.align-center {
+    text-align: center;
+}
+
+.align-items-center {
+    text-align: center;
+}
+
+.circle {
+    height: 300px;
+    width: 300px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    @media only screen and (min-width: 600px) {
+        margin-top: 10px;
+    }
+}
+
+@mixin mobilestyles($height, $namefont, $descfont) {
+        .circle {
+            height: $height;
+            width: $height
+        }
+        .app-name {
+            font-size: $namefont;
+        }
+        .app-desc {
+            font-size: $descfont;
+        }
+}
+
+@media only screen and (max-width: 640px) {
+    @include mobilestyles(200px, 7em, 2.5em);
+    .align-items-center {
+        margin-top: 80px;
+    }
+}
+
+.hidecircle {
+    .circle {
+        display: none;
+    }
+    @media only screen and (max-width: 640px) {
+        @include mobilestyles(200px, 5em, 1.5em);
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .app-name {
+      font-size: 8em;
+      margin-top: -15px;
+    }
+
+    .app-desc {
+        font-size: 2.5em;
+        margin-top: -20px;
+    }
+}
+.start-button {
+    background-color: #7ffe9f; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .stop-button {
+    background-color: rgba(118, 146, 254, 0.69); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+
+  }
+
+  .cancel-button {
+    background-color: #af7541; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+
+  }
+  .cancel-btn, .retrieve-btn {
+      margin-left: 5px;
+  }
+
+

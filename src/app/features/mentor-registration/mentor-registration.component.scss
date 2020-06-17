@@ -1,0 +1,228 @@
+.register-wrapper {
+  border-radius: 8px;
+  background: #fff;
+  max-width: 448px;
+  h5 {
+    font-weight: 600;
+    color: #000;
+  }
+  .align-center {
+    text-align: center;
+  }
+  .title {
+    padding: 1em;
+    background: #3f4257;
+    border-radius: 5px 5px 0 0;
+    color:white;
+    font-weight: bold;
+  }
+  .sign-in-btn {
+    font-size: 15px;
+    background-color: #385898;
+    color: #fff;
+    &:hover {
+      color: #fff;
+    }
+  }
+  .btn-register {
+    color: #fff;
+    &:hover {
+      color: #fff;
+    }
+  }
+  .forgot-pwd {
+    color: #385898;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .signin-form {
+    font-size: 15px;
+    box-shadow: 0px 0px 7px 1px rgba(107,107,107,0.82);
+    border-radius: 5px;
+    label{
+      color: black;
+    }
+  }
+  .signin-error {
+    padding: 10px 0 0;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  #name {
+      border: 1px solid #ced4da;
+  }
+
+  .reg-form-section {
+      padding-bottom: 10px;
+      .clear-btn {
+          border: 1px solid #385898;
+          font-size: 15px;
+          margin-right: 10px;
+      }
+      overflow: auto;
+  }
+
+  .button-section {
+      display: flex;
+      justify-content: flex-end;
+  }
+}
+
+.register-header {
+  padding: 1em;
+  background: #504D4D;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.progress-section {
+  position: fixed;
+  width: 100%;
+}
+
+app-progressbar {
+  margin-top: 100px;
+}
+
+
+.progress-section {
+  color: #686666;
+  background-color: #fff;
+  z-index: 999;
+}
+
+.progress-comp {
+  margin: 50px 20px 0 20px;
+}
+
+.form-section {
+  padding-top: 250px;
+}
+
+.reg-type {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.form-section {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #686666;
+  label {
+    font-weight: bold;
+    font-size: 17px;
+  }
+}
+
+.input-group-text {
+  font-size: 1.5rem;
+  background-color: #fff;
+}
+
+.next-btn {
+  font-size: 15px;
+  background-color: #686666;
+  color: #fff;
+  font-weight: bold;
+  &:hover {
+    color: #fff;
+  }
+  padding: 0.7rem .75rem;
+}
+
+.form-control,.input-group-text {
+  border: 1px solid #adadad;
+}
+
+.pass-desc {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  p {
+    margin-bottom: 5px;
+    color: #adadad;
+  }
+  .text-success, .text-danger {
+    margin-left: 5px
+  }
+}
+
+.back-btn {
+  position: absolute;
+  left: 8px;
+  .fa {
+    font-size: 1.2em;
+  }
+}
+
+.form-section {
+  .warning-msg {
+    color: #dc3545;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+
+  .add-more {
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .multi-items {
+    margin-bottom: 5px;
+  }
+
+  .mrgnbtm {
+    margin-bottom: 5px;
+  }
+
+  select { 
+   width: 100%; 
+  } 
+
+  .dropdown-data {
+    display: flex;
+    .remove-icon {
+      font-size: 30px;
+      color: #dc3545;
+      margin: 0 10px;
+    }
+  }
+
+  .email-verify-fail {
+    font-size: 19px;
+    font-weight: bold;
+    color: #dc3545;
+  }
+  @media only screen and (min-width: 600px){
+    max-width: 500px;
+    align-items: center!important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.registration-successful {
+  padding: 100px 8px;
+  text-align: center;
+  font-size: 18px;
+  color: #504D4D;
+  p.reg-status-text {
+    margin-bottom: 15px;
+  }
+}
+
+.m-r-3r {
+  margin-right: 3rem
+}
+
+.yes-label, .no-label {
+  position: relative;
+  top: 3px;
+  left: 10px;
+}

@@ -1,0 +1,78 @@
+<div class="teacher-dashboard-wrapper">
+    <h3 class="text-center float-left mb-4 mt-4">Welcome {{userDetails}}</h3>
+    <div class="card bg-card text-white clearfix">
+        <div>
+            <h5 class="card-title">Basic Level</h5>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+            </div>
+            <p class="card-text">20% of Lessons in Basic Level completed</p>
+        </div>
+    </div>
+    <div class="card bg-card text-white mt-4">
+        <div class="">
+            <h5 class="card-title">Current Lesson Set</h5>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+            </div>
+            <p class="card-text">60% of Lessons is completed in 11-15 set</p>
+        </div>
+    </div>
+    <div class="lessonsList mt-4">
+        <h3>Track Your Lessons</h3>
+        <div class="accordion mt-3" id="accordionExample">
+            <div class="card card-box-shadow">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <a class="btn acc-title clearfix" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            <div class="float-left">
+                                <p class="lesson-name font-16">Lesson 11</p>
+                                <p>To be Done</p>
+                            </div>
+                            <span class="float-right"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                        </a>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div>
+                            <button class="btn">Listen Keenly</button>
+                            <button class="btn btn-link float-right">
+                                Complete and Submit >
+                            </button>
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn">Speak Well</button>
+                            <button class="btn btn-link float-right">
+                                Complete and Submit >
+                            </button>
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn">Read Aloud</button>
+                            <button class="btn btn-link float-right">
+                                Complete and Submit >
+                            </button>
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn">Write Right</button>
+                            <button class="btn btn-link float-right">
+                                Complete and Submit >
+                            </button>
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn">Assessment Tests</button>
+                            <button class="btn btn-link float-right">
+                                Complete and Submit >
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

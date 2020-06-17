@@ -1,0 +1,226 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./stylesheets/colors.scss";
+@import "./stylesheets/variables.scss";
+@import "./stylesheets/globals.scss";
+
+/* ============================ RESET ============================ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  border-width: 0px;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+}
+
+html[data-useragent*="MSIE 10.0"] .ms-qSuggest-container {
+  left: 0px;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 12px !important;
+  color: $font_secondary !important;
+  line-height: 1.2 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // background-color: $background !important;
+}
+
+textarea,
+input[type="search"] {
+  padding: 10px;
+  font-size: 12px;
+  display: block;
+  width: 100%;
+  margin: 0px;
+  border: none;
+  color: $font_secondary;
+
+  &:hover,
+  &:focus {
+    background: none;
+  }
+}
+
+ul {
+  list-style-type: none !important;
+  margin-left: 0px !important;
+}
+
+ul li a {
+  text-decoration: none !important;
+}
+
+a {
+  text-decoration: none;
+  color: $font_primary;
+}
+
+textarea {
+  height: 100px;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: $font_placeholder;
+  font-size: 12px;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: $font_placeholder;
+  font-size: 12px;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: $font_placeholder;
+  font-size: 12px;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: $font_placeholder;
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-wrapper, .register-wrapper {
+    width: 100%;
+    margin-top: 10%;
+  }
+
+  .login-wrapper {
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .login-wrapper, .register-wrapper {
+    width: 30%;
+    margin-top: 4%;
+  }
+}
+
+.font15 {
+  font-size: 15px;
+}
+
+.custom-control-label::before,.custom-control-label::after {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+.form-control {
+  font-size: 1.5rem;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 15px !important;
+  color: #ccc !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-size: 15px !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size: 15px !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-size: 15px !important;
+}

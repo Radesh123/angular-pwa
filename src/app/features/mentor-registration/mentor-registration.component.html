@@ -1,0 +1,387 @@
+<div>
+    <div class="progress-section" *ngIf="registrationStatus === 'success'">
+        <h4 class="register-header">
+            <span>Registration Complete</span>
+        </h4>
+    </div>
+    <div class="progress-section" *ngIf="registrationStatus !== 'success'">
+        <h4 class="register-header">
+            <span class="back-btn" *ngIf="currentStep > 1" (click)="prevSection()">
+                <i class="fa fa-arrow-left"></i>
+            </span>
+            <span>Register</span>
+        </h4>
+        <div class="progress-comp">
+            <app-progressbar [currentStep]="currentStep" [progressBarInfo]="progressBarInfo"></app-progressbar>
+        </div>
+        <div class="reg-type">{{regInfoType}}</div>
+    </div>
+    <form class="form-section" [formGroup]="registrationForm" *ngIf="registrationStatus !== 'success'">
+        <div class="step1-info" *ngIf="(currentStep === 1)" formGroupName="profileDetails">
+            <div class="form-group">
+                <label class="col-form-label"> Name</label>
+                <div>
+                    <input type="text" class="form-control" name="name" formControlName="name" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('profileDetails').get('name').invalid && (registrationForm.get('profileDetails').get('name').dirty || registrationForm.get('profileDetails').get('name').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('profileDetails').get('name').errors.required">
+                        Name is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Gender</label>
+                <div>
+                    <select class="form-control" formControlName="gender" name="gender">
+                        <option value="">Choose gender</option>
+                        <option *ngFor="let gender of regMetaData?.genders" [value]="gender.id">{{gender.description}}
+                        </option>
+                    </select>
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('profileDetails').get('gender').invalid && (registrationForm.get('profileDetails').get('gender').dirty || registrationForm.get('profileDetails').get('gender').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('profileDetails').get('gender').errors.required">
+                        Gender is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Contact Number</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">+91</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="0123456789" formControlName="contactNumber"
+                        name="contactNumber">
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('profileDetails').get('contactNumber').invalid && (registrationForm.get('profileDetails').get('contactNumber').dirty || registrationForm.get('profileDetails').get('contactNumber').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('profileDetails').get('contactNumber').errors?.required">
+                        Contact Number is required.
+                    </div>
+                    <div *ngIf="registrationForm.get('profileDetails').get('contactNumber').errors?.pattern">
+                        Please put 10 digit contact number.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label htmlFor="email" class="col-form-label">Email</label>
+                <div>
+                    <input type="email" placeholder="Email address" class="form-control" id="email"
+                        formControlName="email" name="email" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('profileDetails').get('email').invalid && (registrationForm.get('profileDetails').get('email').dirty || registrationForm.get('profileDetails').get('email').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('profileDetails').get('email').errors.required">
+                        Email is required.
+                    </div>
+                    <div *ngIf="registrationForm.get('profileDetails').get('email').errors.email">
+                        Enter valid Email ID.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">State</label>
+                <div>
+                    <select class="form-control" formControlName="state" name="state">
+                        <option value="">Choose state</option>
+                        <option *ngFor="let state of regMetaData?.states" [value]="state.id">{{state.name}}</option>
+                    </select>
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('profileDetails').get('state').invalid && (registrationForm.get('profileDetails').get('state').dirty || registrationForm.get('profileDetails').get('state').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('profileDetails').get('state').errors.required">
+                        State is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">City</label>
+                <div>
+                    <input type="text" class="form-control" name="city" formControlName="city" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('profileDetails').get('city').invalid && (registrationForm.get('profileDetails').get('city').dirty || registrationForm.get('profileDetails').get('city').touched || nextClicked)">
+                    <!-- <div *ngIf="registrationForm.get('profileDetails').get('city').errors.required"> -->
+                    City is required.
+                </div>
+            </div>
+        </div>
+        <div class="step2-info" *ngIf="currentStep === 2" formGroupName="professionalDetails">
+            <div class="form-group multi-items">
+                <label htmlFor="languages" class="col-form-label">Proficiency in Local Languages</label>
+                <div formArrayName="languages">
+                    <div *ngFor="let item of languages['controls']; let langIndex=index" [class.mrgnbtm]="langIndex !== 0"
+                        [formGroupName]="langIndex">
+                        <div class="dropdown-data">
+                            <select class="form-control" formControlName="language" name="language">
+                                <option value="">select language</option>
+                                <option
+                                    *ngFor="let language of regMetaData?.languages | removeItem: 'id': 'language': registrationForm.get('professionalDetails').get('languages').value: registrationForm.get('professionalDetails').get('languages')['controls'][langIndex].value.language"
+                                    [value]="language.id">{{language.name}}</option>
+                            </select>
+                            <span *ngIf="langIndex !== 0" class="remove-icon"
+                                (click)="removeItem('languages', langIndex)"><i class="fa fa-minus-circle"></i></span>
+                        </div>
+                        <div class="warning-msg"
+                            *ngIf="registrationForm.get('professionalDetails').get('languages')['controls'][langIndex].invalid && (registrationForm.get('professionalDetails').get('languages')['controls'][langIndex].dirty || registrationForm.get('professionalDetails').get('languages')['controls'][langIndex].touched || nextClicked)">
+                            <div
+                                *ngIf="registrationForm.get('professionalDetails').get('languages')['controls'][langIndex]['controls']['language'].errors.required">
+                                This field is required.
+                            </div>
+                        </div>
+                        <div class="add-more" *ngIf="langIndex === 0">
+                            <span (click)="addMoreItems('languages', 'language')">Add More Languages +</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <label class="col-form-label">Currently working in SSSVV?</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="custom-control custom-radio custom-control-inline m-r-3r">
+                            <input type="radio" class="custom-control-input" id="working" name="worksInSSSVV"
+                                formControlName="worksInSSSVV" value="Yes">
+                            <label class="custom-control-label" for="working"><span class="yes-label">Yes</span></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline m-r-3r">
+                            <input type="radio" class="custom-control-input" id="notworking" name="worksInSSSVV"
+                                formControlName="worksInSSSVV" value="No">
+                            <label class="custom-control-label" for="notworking"><span class="no-label">No</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('professionalDetails').get('worksInSSSVV').invalid && (registrationForm.get('professionalDetails').get('worksInSSSVV').dirty || registrationForm.get('professionalDetails').get('worksInSSSVV').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('professionalDetails').get('worksInSSSVV').errors.required">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group"
+                *ngIf="registrationForm.get('professionalDetails').get('worksInSSSVV').value === 'Yes'">
+                <label htmlFor="volntname" class="col-form-label">Name of an existing SSSVV Volunteer</label>
+                <div>
+                    <input type="text" placeholder="Volunteer Name" class="form-control" id="volunt-name"
+                        formControlName="volunteerName" name="volunteerName" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('professionalDetails').get('volunteerName').invalid && (registrationForm.get('professionalDetails').get('volunteerName').dirty || registrationForm.get('professionalDetails').get('volunteerName').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('professionalDetails').get('volunteerName').errors.required">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <label class="col-form-label">Currently working in Sai Organization?</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="custom-control custom-radio custom-control-inline m-r-3r">
+                            <input type="radio" class="custom-control-input" id="yes" name="worksInSaiOrg"
+                                formControlName="worksInSaiOrg" value="Yes">
+                            <label class="custom-control-label" for="yes"><span class="yes-label">Yes</span></label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline m-r-3r">
+                            <input type="radio" class="custom-control-input" id="no" name="worksInSaiOrg"
+                                formControlName="worksInSaiOrg" value="No">
+                            <label class="custom-control-label" for="no"><span class="no-label">No</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('professionalDetails').get('worksInSaiOrg').invalid && (registrationForm.get('professionalDetails').get('worksInSaiOrg').dirty || registrationForm.get('professionalDetails').get('worksInSaiOrg').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('professionalDetails').get('worksInSaiOrg').errors.required">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group"
+                *ngIf="registrationForm.get('professionalDetails').get('worksInSaiOrg').value === 'Yes'">
+                <label htmlFor="sssvv-volunteer" class="col-form-label">Name of an existing SSSVV Volunteer from whom
+                    you
+                    have
+                    come to know about the PYF program?
+                </label>
+                <div>
+                    <input type="text" placeholder="Volunteer Name" class="form-control" id="sssvv-volunteer"
+                        formControlName="sssvvVolunteer" name="sssvvVolunteer" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('professionalDetails').get('sssvvVolunteer').invalid && (registrationForm.get('professionalDetails').get('sssvvVolunteer').dirty || registrationForm.get('professionalDetails').get('sssvvVolunteer').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('professionalDetails').get('sssvvVolunteer').errors.required">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Qualification</label>
+                <div>
+                    <select class="form-control" formControlName="qualification" name="qualification">
+                        <option value="">Qualification</option>
+                        <option *ngFor="let qualification of regMetaData?.qualifications" [value]="qualification.id">
+                            {{qualification.description}}</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('professionalDetails').get('qualification').invalid && (registrationForm.get('professionalDetails').get('qualification').dirty || registrationForm.get('professionalDetails').get('qualification').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('professionalDetails').get('qualification').errors.required">
+                        Qualification is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group"
+                *ngIf="registrationForm.get('professionalDetails').get('qualification').value === 'other'">
+                <label htmlFor="other-qual" class="col-form-label">Specify Qualification</label>
+                <div>
+                    <input type="text" class="form-control" id="other-qual" placeholder="Qualification"
+                        formControlName="OtherQualification" name="OtherQualification" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('professionalDetails').get('OtherQualification').invalid && (registrationForm.get('professionalDetails').get('OtherQualification').dirty || registrationForm.get('professionalDetails').get('OtherQualification').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('professionalDetails').get('OtherQualification').errors.required">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label htmlFor="past-eng-exp" class="col-form-label">Past experience in teaching English?</label>
+                <div>
+                    <input type="text" placeholder="Exp in english" class="form-control" id="past-eng-exp"
+                        formControlName="expInEng" name="expInEng" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('professionalDetails').get('expInEng').invalid && (registrationForm.get('professionalDetails').get('expInEng').dirty || registrationForm.get('professionalDetails').get('expInEng').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('professionalDetails').get('expInEng').errors.required">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label htmlFor="other-qual" class="col-form-label">Current Occupation</label>
+                <div>
+                    <input type="text" class="form-control" id="occupation" placeholder="Occupation"
+                        formControlName="occupation" name="occupation" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('professionalDetails').get('occupation').invalid && (registrationForm.get('professionalDetails').get('occupation').dirty || registrationForm.get('professionalDetails').get('occupation').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('professionalDetails').get('occupation').errors.required">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label htmlFor="no-of-hrs" class="col-form-label">Time available per week to devote to the PYF program
+                    (in
+                    terms of number of hours per week)?</label>
+                <div>
+                    <input type="text" placeholder="No of hours per week" class="form-control" id="past-eng-exp"
+                        formControlName="weeklyHours" name="weeklyHours" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('professionalDetails').get('weeklyHours').invalid && (registrationForm.get('professionalDetails').get('weeklyHours').dirty || registrationForm.get('professionalDetails').get('weeklyHours').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('professionalDetails').get('weeklyHours').errors.required">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label htmlFor="no-of-teachers" class="col-form-label">How many teachers can I manage at any point of
+                    time?</label>
+                <div>
+                    <input type="text" placeholder="No of teachers to be managed" class="form-control"
+                        id="reachers-managed" formControlName="managebleTeachers" name="managebleTeachers" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('professionalDetails').get('managebleTeachers').invalid && (registrationForm.get('professionalDetails').get('managebleTeachers').dirty || registrationForm.get('professionalDetails').get('managebleTeachers').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('professionalDetails').get('managebleTeachers').errors.required">
+                        This field is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step3-info" *ngIf="currentStep === 3" formGroupName="passwordDetails">
+            <div class="form-group">
+                <label htmlFor="password" class="col-form-label">Enter Password</label>
+                <div>
+                    <input type="password" formControlName="password" class="form-control" id="password"
+                        placeholder="•••••••••" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('passwordDetails').invalid && (registrationForm.get('passwordDetails').get('password').dirty || registrationForm.get('passwordDetails').get('password').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('passwordDetails').get('password').errors?.required">
+                        This field is required.
+                    </div>
+                </div>
+                <div class="pass-desc">
+                    <p>
+                        <span>Use 8 or more characters</span>
+                        <span
+                            *ngIf="registrationForm.get('passwordDetails').get('password').touched || registrationForm.get('passwordDetails').get('password').dirty">
+                            <span class="text-danger"
+                                *ngIf="registrationForm.get('passwordDetails').get('password').errors?.required || registrationForm.get('passwordDetails').get('password').errors?.minlength"><i
+                                    class="fa fa-exclamation-circle"></i></span>
+                            <span class="text-success"
+                                *ngIf="!registrationForm.get('passwordDetails').get('password').errors?.required && !registrationForm.get('passwordDetails').get('password').errors?.minlength"><i
+                                    class="fa fa-check"></i></span>
+                        </span>
+                    </p>
+                    <p>
+                        <span>Should contain at least one number and one symbol</span>
+                        <span
+                            *ngIf="registrationForm.get('passwordDetails').get('password').touched || registrationForm.get('passwordDetails').get('password').dirty">
+                            <span class="text-danger"
+                                *ngIf="registrationForm.get('passwordDetails').get('password').errors?.numberSpecial"><i
+                                    class="fa fa-exclamation-circle"></i></span>
+                            <span class="text-success"
+                                *ngIf="!registrationForm.get('passwordDetails').get('password').errors?.numberSpecial"><i
+                                    class="fa fa-check"></i></span>
+                        </span>
+                    </p>
+                    <p>
+                        <span>The first character should be in Upper Case</span>
+                        <span
+                            *ngIf="registrationForm.get('passwordDetails').get('password').touched || registrationForm.get('passwordDetails').get('password').dirty">
+                            <span class="text-danger"
+                                *ngIf="registrationForm.get('passwordDetails').get('password').errors?.caps"><i
+                                    class="fa fa-exclamation-circle"></i></span>
+                            <span class="text-success"
+                                *ngIf="!registrationForm.get('passwordDetails').get('password').errors?.caps"><i
+                                    class="fa fa-check"></i></span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label htmlFor="confirm-pass" class="col-form-label">Reconfirm Password</label>
+                <div>
+                    <input type="password" class="form-control" formControlName="confirmPassword" id="confirm-pass"
+                        placeholder="•••••••••" />
+                </div>
+                <div class="warning-msg"
+                    *ngIf="registrationForm.get('passwordDetails').invalid && (registrationForm.get('passwordDetails').get('confirmPassword').dirty || registrationForm.get('passwordDetails').get('confirmPassword').touched || nextClicked)">
+                    <div *ngIf="registrationForm.get('passwordDetails').get('confirmPassword').errors?.required">
+                        This field is required.
+                    </div>
+                    <div
+                        *ngIf="!registrationForm.get('passwordDetails').get('confirmPassword').errors?.required && registrationForm.get('passwordDetails').errors?.notSame">
+                        Should match with password.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn next-btn col-sm-12" (click)="updateStepInfo()">{{btnText}}</button>
+        </div>
+    </form>
+    <div class="registration-successful" *ngIf="registrationStatus === 'success'">
+        <p class="reg-status-text">Thank you for completing your registration! We will get back to you soon.</p>
+        <!-- <p class="verify-mail-text">A verification email has been sent to your registered email ID. In order to login, click on the link to validate your profile.</p> -->
+    </div>
+</div>

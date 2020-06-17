@@ -1,0 +1,109 @@
+<div class="progress-section">
+    <h4 class="register-header">
+        <span class="back-btn" *ngIf="currentStep > 1" (click)="prevSection()">
+            <i class="fa fa-arrow-left"></i>
+        </span>
+        <span class="step-text">{{stepText}}</span>
+    </h4>
+</div>
+<div class="mentor-list" *ngIf="currentStep === 1">
+    <div *ngFor="let mentor of mentorData" class="mentor-elem">
+        <div class="row">
+            <div class="col mentor-name">
+                {{mentor.name}}
+            </div>
+        </div>
+        <div class="row det-sec">
+            <div class="col">
+                <span *ngIf="mentor.isActive" class="appr-status">Approved</span>
+                <span *ngIf="!mentor.isActive" class="appr-status">Pending Action</span>
+            </div>
+            <div class="col view-det">
+                <span (click)="viewDetails(mentor.userId, mentor.name)">View Details ></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mentor-info" *ngIf="currentStep > 1">
+    <div class="profile-det">
+        <div class="row img-sec">
+            <div class="col-2"><i class="fa fa-user-circle fa-4x" aria-hidden="true"></i></div>
+            <div class="col mentor-name-prof">{{mentorName}}</div>
+        </div>
+        <div class="row prof-det-sec">
+            <div class="col-12 prof-det-label-1">Profile Details</div>
+            <div class="profile-item col-12">
+                <div class="prof-det-label-2">Email</div>
+                <div class="prof-det-value-2">{{mentorProfile.email}}</div>
+            </div>
+            <div class="profile-item col-12">
+                <div class="prof-det-label-2">Contact Number</div>
+                <div class="prof-det-value-2">{{mentorProfile.mobileNumber}}</div>
+            </div>
+            <div class="profile-item col-12">
+                <div class="prof-det-label-2">Gender</div>
+                <div class="prof-det-value-2">{{mentorProfile.gender}}</div>
+            </div>
+            <div class="profile-item col-12">
+                <div class="prof-det-label-2">City</div>
+                <div class="prof-det-value-2">{{mentorProfile.city}}</div>
+            </div>
+            <div class="profile-item col-12">
+                <div class="prof-det-label-2">State</div>
+                <div class="prof-det-value-2">{{mentorProfile.state}}</div>
+            </div>
+            <div class="profile-item col-12">
+                <div class="prof-det-label-2">Local Language Competency</div>
+                <div class="prof-det-value-2" *ngFor="let language of mentorProfile.languages">{{language}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="prof-info-sec">
+        <div class="col-12 prof-det-label-1">Professional Details</div>
+        <div class="profile-item col-12">
+            <div class="prof-det-label-2">Current Occupation</div>
+            <div class="prof-det-value-2">{{mentorProfile.occupation}}</div>
+        </div>
+        <div class="profile-item col-12">
+            <div class="prof-det-label-2">Qualification</div>
+            <div class="prof-det-value-2">{{mentorProfile.qualification}}</div>
+        </div>
+        <div class="profile-item col-12">
+            <div class="prof-det-label-2">Past Experience in Teaching English</div>
+            <div class="prof-det-value-2">{{mentorProfile.englishTeachingExperience}}</div>
+        </div>
+        <div class="profile-item col-12">
+            <div class="prof-det-label-2">Currently working in SSSVV?</div>
+            <div class="prof-det-value-2">{{mentorProfile.workingInSssvv}}</div>
+        </div>
+        <div class="profile-item col-12">
+            <div class="prof-det-label-2">Please mention the name of the existing SSSVV Volunteer who referred you to the Program</div>
+            <div class="prof-det-value-2">{{mentorProfile.sssvvVolunteer}}</div>
+        </div>
+        <div class="profile-item col-12">
+            <div class="prof-det-label-2">Currently working in Sai Organization?</div>
+            <div class="prof-det-value-2">{{mentorProfile.workingInSaiOrganization}}</div>
+        </div>
+    </div>
+    <div class="prog-req-sec">
+        <div class="col-12 prof-det-label-1">Program Requirement</div>
+        <div class="profile-item col-12">
+            <div class="prof-det-label-2">Time available per week to devote to the PYF program</div>
+            <div class="prof-det-value-2">{{mentorProfile.timeCapacity}}</div>
+        </div>
+        <div class="profile-item col-12">
+            <div class="prof-det-label-2">How many Learners can the Mentor manage at any point of time</div>
+            <div class="prof-det-value-2">{{mentorProfile.teacherCapacity}}</div>
+        </div>
+    </div>
+    <div class="approve-sec">
+        <div class="row">
+            <div class="col dis-appr-btn">
+                <button (click)="approveMentor('disapprove')">Disapprove</button>
+            </div>
+            <div class="col appr-btn">
+                <button (click)="approveMentor('approve')">Approve</button>
+            </div>
+        </div>
+    </div>
+</div>

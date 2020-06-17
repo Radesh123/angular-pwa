@@ -1,0 +1,44 @@
+.clearfix {
+  clear: both;
+}
+
+.svg-inline--fa {
+  width: auto !important;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 3px;
+  background: $button_primary;
+  border: 1px solid $button_primary;
+  color: $background_white;
+  font-weight: 600;
+  font-size: 12px;
+  box-shadow: 0 0.0625rem 0.25rem 0 rgba(201,201,201,0.5);
+  cursor: pointer;
+  &:hover, &:focus {
+    background: $button_primary_hover;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+.button-blue {
+  background: $button_blue;
+  &:hover, &:focus {
+    background: $button_blue_hover;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+.button-white {
+  background: $background_white;
+  border: 1px solid $border_gray;
+  color: $font_secondary;
+  &:hover, &:focus {
+    background: $background_light;
+    text-decoration: none;
+    outline: none;
+  }
+}
